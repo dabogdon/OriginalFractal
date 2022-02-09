@@ -11,12 +11,12 @@ public void setup() {
 public void draw() {
   background(0);
   text(repeat, 10, 20);
-  if (repeat>650) {zoomOut=true;}
+  if (repeat>450) {zoomOut=true;}
   if (repeat<=-5) {zoomOut=false;}
   if (zoomOut==true) {
     repeat-=5;
     text("Backing up!", 10, 40);
-  } else {repeat+=2;}
+  } else {repeat+=1;}
   fractal(250, 250, repeat);
 }
 
@@ -25,5 +25,7 @@ public void fractal(int x, int y, int recurse) {
   if (recurse > 10) {
     fractal(x-recurse/2, y, recurse-50);
     fractal(x+recurse/2, y, recurse-50);
+    fractal(x, y-recurse/2, recurse-50);
+    fractal(x, y+recurse/2, recurse-50);
   }
 }
